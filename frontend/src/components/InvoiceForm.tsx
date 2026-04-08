@@ -102,7 +102,10 @@ export function InvoiceForm({ onSubmit, onCreated }: Props) {
 
       <div className="space-y-3">
         {form.items.map((item, idx) => (
-          <div key={idx} className="grid gap-2 rounded-xl border border-slate-100 bg-slate-50/70 p-2 transition hover:border-indigo-100 hover:bg-indigo-50/50 md:grid-cols-12">
+          <div
+            key={idx}
+            className="grid items-end gap-2 rounded-xl border border-slate-100 bg-slate-50/70 p-2 transition hover:border-indigo-100 hover:bg-indigo-50/50 md:grid-cols-12"
+          >
             <input
               className="input md:col-span-5"
               placeholder="Item name"
@@ -130,7 +133,7 @@ export function InvoiceForm({ onSubmit, onCreated }: Props) {
               type="button"
               onClick={() => removeItem(idx)}
               disabled={form.items.length === 1}
-              className="md:col-span-2 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm font-medium text-rose-600 transition hover:bg-rose-100 disabled:opacity-50"
+              className="md:col-span-2 inline-flex h-10 items-center justify-center rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm font-medium text-rose-600 transition hover:bg-rose-100 disabled:opacity-50"
             >
               Remove
             </button>
