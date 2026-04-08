@@ -45,32 +45,34 @@ export function InvoiceTable({ invoices }: { invoices: Invoice[] }) {
         </select>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto rounded-xl border border-indigo-100">
         <table className="min-w-full text-left text-sm">
-          <thead className="text-slate-500">
+          <thead className="bg-indigo-50/80 text-slate-600">
             <tr>
-              <th className="pb-3">Invoice ID</th>
-              <th className="pb-3">Customer</th>
-              <th className="pb-3">Date</th>
-              <th className="pb-3">Total</th>
-              <th className="pb-3">Status</th>
+              <th className="px-3 py-3">Invoice ID</th>
+              <th className="px-3 py-3">Customer</th>
+              <th className="px-3 py-3">Date</th>
+              <th className="px-3 py-3">Total</th>
+              <th className="px-3 py-3">Status</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((invoice) => (
-              <tr key={invoice.id} className="border-t border-slate-100">
-                <td className="py-3">
-                  <Link href={`/invoices/${invoice.id}`} className="text-blue-600 hover:underline">
+              <tr key={invoice.id} className="row-hover border-t border-slate-100">
+                <td className="px-3 py-3">
+                  <Link href={`/invoices/${invoice.id}`} className="font-medium text-indigo-700 transition hover:text-violet-700 hover:underline">
                     #{invoice.id}
                   </Link>
                 </td>
-                <td className="py-3">{invoice.customer.name}</td>
-                <td className="py-3">{invoice.invoice_date}</td>
-                <td className="py-3">${Number(invoice.total_amount).toFixed(2)}</td>
-                <td className="py-3">
+                <td className="px-3 py-3">{invoice.customer.name}</td>
+                <td className="px-3 py-3">{invoice.invoice_date}</td>
+                <td className="px-3 py-3 font-semibold text-slate-700">${Number(invoice.total_amount).toFixed(2)}</td>
+                <td className="px-3 py-3">
                   <span
-                    className={`rounded-full px-2 py-1 text-xs ${
-                      invoice.status === "Paid" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"
+                    className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
+                      invoice.status === "Paid"
+                        ? "bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200"
+                        : "bg-amber-100 text-amber-700 ring-1 ring-amber-200"
                     }`}
                   >
                     {invoice.status}

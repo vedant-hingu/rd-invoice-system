@@ -79,7 +79,7 @@ export function InvoiceForm({ onSubmit, onCreated }: Props) {
   return (
     <form onSubmit={submit} className="card space-y-5">
       <div>
-        <h2 className="text-lg font-semibold">Create Invoice</h2>
+        <h2 className="text-lg font-semibold text-slate-800">Create Invoice</h2>
         <p className="text-sm text-slate-500">Line totals, tax, and invoice total are computed on the backend.</p>
       </div>
 
@@ -102,7 +102,7 @@ export function InvoiceForm({ onSubmit, onCreated }: Props) {
 
       <div className="space-y-3">
         {form.items.map((item, idx) => (
-          <div key={idx} className="grid gap-2 md:grid-cols-12">
+          <div key={idx} className="grid gap-2 rounded-xl border border-slate-100 bg-slate-50/70 p-2 transition hover:border-indigo-100 hover:bg-indigo-50/50 md:grid-cols-12">
             <input
               className="input md:col-span-5"
               placeholder="Item name"
@@ -130,13 +130,13 @@ export function InvoiceForm({ onSubmit, onCreated }: Props) {
               type="button"
               onClick={() => removeItem(idx)}
               disabled={form.items.length === 1}
-              className="md:col-span-2 rounded-lg border border-slate-200 px-3 py-2 text-sm disabled:opacity-50"
+              className="md:col-span-2 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm font-medium text-rose-600 transition hover:bg-rose-100 disabled:opacity-50"
             >
               Remove
             </button>
           </div>
         ))}
-        <button type="button" onClick={addItem} className="rounded-lg border border-slate-200 px-3 py-2 text-sm">
+        <button type="button" onClick={addItem} className="btn-soft">
           + Add Item
         </button>
       </div>
@@ -161,7 +161,7 @@ export function InvoiceForm({ onSubmit, onCreated }: Props) {
         </select>
       </div>
 
-      {error ? <p className="text-sm text-red-600">{error}</p> : null}
+      {error ? <p className="rounded-lg border border-rose-200 bg-rose-50 px-3 py-2 text-sm text-rose-700">{error}</p> : null}
       <button className="btn-primary w-full" disabled={submitting}>
         {submitting ? "Creating..." : "Create Invoice"}
       </button>

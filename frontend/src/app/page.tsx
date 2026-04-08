@@ -31,12 +31,14 @@ export default function Home() {
 
   return (
     <main className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-8 md:px-6">
-      <header>
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900">Simple Invoice System</h1>
-        <p className="text-slate-500">Modern invoice flow with backend-computed totals via Django REST API.</p>
+      <header className="fade-in rounded-2xl border border-indigo-100 bg-white/70 p-5 shadow-sm backdrop-blur-sm">
+        <h1 className="bg-gradient-to-r from-indigo-700 via-violet-700 to-fuchsia-700 bg-clip-text text-3xl font-bold tracking-tight text-transparent md:text-4xl">
+          Simple Invoice System
+        </h1>
+        <p className="mt-2 text-slate-600">Modern invoice flow with backend-computed totals via Django REST API.</p>
       </header>
       <section className="grid gap-6 lg:grid-cols-5">
-        <div className="lg:col-span-2">
+        <div className="fade-in lg:col-span-2">
           <InvoiceForm
             onSubmit={createInvoice}
             onCreated={(invoice) => {
@@ -44,10 +46,10 @@ export default function Home() {
             }}
           />
         </div>
-        <div className="lg:col-span-3 space-y-3">
-          <h2 className="text-lg font-semibold">Invoices</h2>
+        <div className="fade-in lg:col-span-3 space-y-3">
+          <h2 className="text-lg font-semibold text-slate-800">Invoices</h2>
           {loading ? <p className="card text-sm text-slate-500">Loading invoices...</p> : null}
-          {error ? <p className="card text-sm text-red-600">{error}</p> : null}
+          {error ? <p className="card border-red-200 text-sm text-red-600">{error}</p> : null}
           {!loading && !error ? <InvoiceTable invoices={invoices} /> : null}
         </div>
       </section>
